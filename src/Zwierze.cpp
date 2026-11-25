@@ -1,4 +1,5 @@
 #include "Zwierze.h"
+#include <iostream>
 
 using namespace std;
 
@@ -49,4 +50,22 @@ void Zwierze::setEnergia(int nowaEnergia){
 
 void Zwierze::setZdrowie(bool stan){
     zdrowie = stan;
+}
+
+bool Zwierze::operator==(const Zwierze& inne)const{
+    return this->id == inne.id;
+}
+
+bool Zwierze::operator<(const Zwierze& inne)const{
+    return this->glod < inne.glod;
+}
+
+ostream& operator<<(ostream& os, const Zwierze& z){
+    os << "[" << z.getGatunek() << "] ID: " << z.id
+       << "| Imie: " << z.imie
+       << "| Głód: " << z.glod
+       << "| Szczęście: " << z.szczescie << "/100"
+       << "| Energia: " << z.energia << "/100"
+       << "| Stan: " << (z.zdrowie ? "Zdrowe <3" : "Chore!!");
+    return os;
 }

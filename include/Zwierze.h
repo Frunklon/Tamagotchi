@@ -37,5 +37,9 @@ class Zwierze{
         virtual void uplywDnia() = 0;
         virtual std::string getGatunek() const=0;
 
+
+        bool operator==(const Zwierze& inne) const;
+        bool operator<(const Zwierze& inne) const;
+        friend std::ostream& operator<<(std::ostream& os, const Zwierze& z);
 };
 #endif
