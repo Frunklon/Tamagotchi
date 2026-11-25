@@ -3,6 +3,6 @@
 
 
 int main(){
-    std::cout << "Klasa Zwierze działa! \n";
+    std::cout << "działa \n";
     return 0;
 }
