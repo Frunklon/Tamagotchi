@@ -17,6 +17,8 @@ class Kot : public Zwierze{
         void bawSie() override;
         void uplywDnia() override;
         std::string getGatunek() const override;
+        int getMaxWiek() const override;
+        void rysuj() const override;
 };
 
 #endif

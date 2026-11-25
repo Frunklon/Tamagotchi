@@ -39,3 +39,24 @@ void Kon::uplywDnia() {
 string Kon::getGatunek() const{
     return "Kon";
 }
+int Kon::getMaxWiek() const {return 25;}
+
+void Kon::rysuj() const{
+   cout << R"(
+         /\  _,,,_  /\
+        /  \/ / / \/  \
+       / /\  / / /  /\ \
+      | /  \/ / / \/  \ |
+      |/               \|
+      |   (o)     (o)   |
+      |                 |
+      |     .-----.     |
+      |    / () () \    |
+      |   |   \_/   |   |
+       \   \ '---' /   /
+        '.  '-----'  .'
+         /|         |\
+        / |         | \
+       /  |         |  \
+)" << endl;
+}

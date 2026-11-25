@@ -38,3 +38,17 @@ void Kot::uplywDnia(){
 string Kot::getGatunek() const {
     return "Kot";
 }
+int Kot::getMaxWiek() const {return 18;}
+
+void Kot::rysuj() const{
+    cout << R"(
+      /\     /\
+     /  \___/  \
+    |   o   o   |
+   --=\   v   /=--
+    --=\ \_/ /=--
+      /       \
+     |  |   |  |
+     (__|___|__)
+    )" << endl;
+}

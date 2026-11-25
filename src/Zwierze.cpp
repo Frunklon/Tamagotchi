@@ -4,10 +4,10 @@
 using namespace std;
 
 Zwierze::Zwierze() // konstruktor domyślny z listą inicjalizacyjną
- : id(0), imie("Bezimmienny"), glod(50), szczescie(50), energia(50), zdrowie(true) {}
+ : id(0), imie("Bezimmienny"), glod(50), szczescie(50), energia(50), zdrowie(true), zyje(true), wiek(1), dniChoroby(0) {}
 
 Zwierze::Zwierze(int id, const string& imie) // konstruktor parametryczny
-    : id(id), imie(imie) , glod(50), szczescie(50), energia(50), zdrowie(true){}
+    : id(id), imie(imie) , glod(50), szczescie(50), energia(50), zdrowie(true), zyje(true), wiek(1), dniChoroby(0) {}
 
 int Zwierze::getId() const{ return id;}
 string Zwierze::getImie() const{return imie;}
@@ -15,6 +15,9 @@ int Zwierze::getGlod() const{return glod;}
 int Zwierze::getSzczescie() const {return szczescie;}
 int Zwierze::getEnergia() const { return energia;}
 bool Zwierze::getZdrowie() const { return zdrowie;}
+bool Zwierze::czyZyje() const {return zyje;}
+int Zwierze::getWiek() const {return wiek;}
+
 
 void Zwierze::setImie(const string& noweImie){
     if(!noweImie.empty()){
@@ -52,6 +55,35 @@ void Zwierze::setZdrowie(bool stan){
     zdrowie = stan;
 }
 
+void Zwierze::ulecz(){
+    if(!zyje) return;
+    zdrowie = true;
+    dniChoroby = 0;
+    setEnergia(energia + 20);
+}
+
+void Zwierze::sprawdzStanPoDniu(){
+    if(!zyje) return;
+
+    wiek++;
+    if(wiek > getMaxWiek()){
+        zyje = false; //smierc ze starosci
+        return;
+    }
+
+    if(!zdrowie){
+        dniChoroby++;
+        if(dniChoroby >= 2){
+            zyje=false; // smierc z powodu dwudniowej choroby
+        }
+
+    } else {
+        dniChoroby =0;
+    }
+}
+
+
+
 bool Zwierze::operator==(const Zwierze& inne)const{
     return this->id == inne.id;
 }
@@ -66,6 +98,7 @@ ostream& operator<<(ostream& os, const Zwierze& z){
        << "| Głód: " << z.glod
        << "| Szczęście: " << z.szczescie << "/100"
        << "| Energia: " << z.energia << "/100"
-       << "| Stan: " << (z.zdrowie ? "Zdrowe <3" : "Chore!!");
+       << "| Wiek: " << z.wiek << "/" << z.getMaxWiek()
+       << "| Stan: " << (!z.zyje ? "MARTWE [R.I.P] [*]" : (z.zdrowie ? "Zdrowe <3" : "CHORE!!!"));
     return os;
 }

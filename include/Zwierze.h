@@ -2,6 +2,7 @@
 #define ZWIERZE_H
 
 #include <string>
+#include <iostream>
 
 class Zwierze{
     private:
@@ -11,6 +12,13 @@ class Zwierze{
         int szczescie;
         int energia;
         bool zdrowie;
+        bool zyje;
+        int wiek;
+        int dniChoroby;
+
+    protected:
+        void sprawdzStanPoDniu();
+
 
     public:
         Zwierze();
@@ -24,6 +32,8 @@ class Zwierze{
         int getSzczescie() const;
         int getEnergia() const;
         bool getZdrowie() const;
+        bool czyZyje() const;
+        int getWiek() const;
 
         //settery
         void setImie(const std::string& noweImie);
@@ -31,11 +41,14 @@ class Zwierze{
         void setSzczescie(int noweSzczescie);
         void setEnergia(int nowaEnergia);
         void setZdrowie(bool stan); 
+        void ulecz();
 
         virtual void nakarm(int ilosc) = 0;
         virtual void bawSie() = 0;
         virtual void uplywDnia() = 0;
         virtual std::string getGatunek() const=0;
+        virtual int getMaxWiek() const = 0;
+        virtual void rysuj() const =0;
 
 
         bool operator==(const Zwierze& inne) const;

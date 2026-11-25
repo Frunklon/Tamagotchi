@@ -37,4 +37,18 @@ string Pies::getGatunek() const{
     return "Pies";
 }
 
+int Pies::getMaxWiek() const {return 15;}
+
+void Pies::rysuj() const{
+    cout << R"(
+        .-----.
+      _/       \_
+     / | o   o | \
+    |  |  .-.  |  |
+     \_| ( o ) |_/
+         \_U_/
+        / | | \
+       (__|_|__)
+    )" << endl;
+}
 
